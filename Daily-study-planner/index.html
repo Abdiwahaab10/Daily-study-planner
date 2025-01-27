@@ -1,0 +1,97 @@
+\<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Study Planner</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <h1>📚 Daily Study Planner</h1>
+      <button id="darkModeToggle">🌙 Dark Mode</button>
+    </header>
+
+    <!-- Pomodoro Timer -->
+    <section class="pomodoro">
+      <h2>⏳ Pomodoro Timer</h2>
+      <div class="timer">
+        <span id="time">25:00</span>
+      </div>
+      <div class="controls">
+        <input type="number" id="workDuration" placeholder="Work (min)" value="25">
+        <input type="number" id="breakDuration" placeholder="Break (min)" value="5">
+        <button onclick="startPomodoro()">Start</button>
+        <button onclick="resetPomodoro()">Reset</button>
+      </div>
+    </section>
+
+    <!-- Input Section -->
+    <section class="input-section">
+      <input type="text" id="topicInput" placeholder="Enter a topic to study">
+      <input type="number" id="hoursInput" placeholder="Hours">
+      <select id="priorityInput">
+        <option value="High">High Priority</option>
+        <option value="Medium">Medium Priority</option>
+        <option value="Low">Low Priority</option>
+      </select>
+      <button onclick="addTopic()">Add Topic</button>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+      <button onclick="filterTasks('all')">All</button>
+      <button onclick="filterTasks('High')">High Priority</button>
+      <button onclick="filterTasks('Medium')">Medium Priority</button>
+      <button onclick="filterTasks('Low')">Low Priority</button>
+      <button onclick="filterTasks('completed')">Completed</button>
+    </section>
+
+    <!-- Progress Tracker -->
+    <section class="progress">
+      <h2>📊 Progress</h2>
+      <div class="progress-bar">
+        <div id="progressFill"></div>
+      </div>
+      <p>Total Hours: <span id="totalHours">0</span> | Completed: <span id="completedHours">0</span></p>
+      <p>Daily Goal: <input type="number" id="dailyGoal" placeholder="Set daily goal (hours)" value="6"></p>
+    </section>
+
+    <!-- Study List -->
+    <section class="planner">
+      <h2>📅 Today's Plan</h2>
+      <ul id="studyList"></ul>
+    </section>
+
+   <!-- Analytics -->
+<section class="analytics">
+  <h2>📈 Analytics</h2>
+  <div class="analytics-controls">
+    <button onclick="showDailyAnalytics()">Daily</button>
+    <button onclick="showWeeklyAnalytics()">Weekly</button>
+    <button onclick="showMonthlyAnalytics()">Monthly</button>
+  </div>
+  <canvas id="analyticsChart"></canvas>
+</section>
+
+    <!-- Export/Import -->
+    <section class="data-actions">
+      <button onclick="exportData()">Export Data</button>
+      <input type="file" id="importFile" accept=".json" onchange="importData(event)">
+      <label for="importFile" class="import-label">Import Data</label>
+    </section>
+  </div>
+
+  <!-- Sound and Confetti -->
+  <audio id="timerSound" src="notification.mp3"></audio>
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/confetti-js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
